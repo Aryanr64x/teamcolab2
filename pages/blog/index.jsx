@@ -5,7 +5,7 @@ export default function Blog({ posts }) {
     return (
         <div className="">
             <Navbar isHome={false} />
-            <div className="px-4 max-w-6xl mx-auto">
+            <div className="px-4  max-w-6xl mx-auto">
                 <h1 className="text-5xl mt-12">
                     Blog
                 </h1>
@@ -13,7 +13,7 @@ export default function Blog({ posts }) {
                     Our latest web design tips, tricks, insights, and resources, hot off the presses.
                 </div>
                 <div className="mt-8">
-                        <div className="grid grid-cols-3">
+                         <div className="grid grid-cols-3">
                           {
                             posts.map((post)=>{
                                 return (  <PostCard key={post.slug.current} post={post} /> )

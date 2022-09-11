@@ -11,13 +11,16 @@ const SinglePost = ({ post }) => {
     function urlFor(source) {
         return builder.image(source)
     }
+    
+    console.log(post)
+
     return (
         <div>
             <Navbar isHome={false}  />
-            <div className="max-w-6xl mx-auto px-4">
-                        <div style={{backgroundImage: urlFor(post.mainImage).url() }} className="h-64">
+            <div className="max-w-5xl mx-auto px-4">
+                        <div style={{backgroundImage: 'url('+urlFor(post.mainImage).url()+')', backgroundSize: 'cover' }} className="h-80"> 
 
-                        </div>
+                        </div> 
             </div>
         </div>
     );
