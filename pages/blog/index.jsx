@@ -16,7 +16,7 @@ export default function Blog({ posts }) {
                         <div className="grid grid-cols-3">
                           {
                             posts.map((post)=>{
-                                return (  <PostCard post={post} /> )
+                                return (  <PostCard key={post.slug.current} post={post} /> )
                             })
                           }
                         </div>
