@@ -3,6 +3,9 @@ import imageUrlBuilder from '@sanity/image-url'
 
 import client from '../../sanity/client'
 import Navbar from '../../components/home/Navbar';
+import { PortableText } from '@portabletext/react';
+import getYouTubeId from 'get-youtube-id'
+import YouTube from 'react-youtube'
 
 
 const SinglePost = ({ post }) => {
@@ -11,16 +14,37 @@ const SinglePost = ({ post }) => {
     function urlFor(source) {
         return builder.image(source)
     }
-    
-    console.log(post)
+
+    const customComponents = {
+        marks: {
+            superscript: ({ children }) => {
+                return (<span> <sup>  {children} </sup></span>)
+            },
+            subscript: ({ children }) => {
+                return (<span> <sub>  {children} </sub></span>)
+            },
+        },
+        types: {
+            image: ({ value }) => { return <img src={imageUrlBuilder(client).image(value)} /> },
+            "video ": ({ value }) => {
+                const url = value.url
+                const id = getYouTubeId(url)
+                return (<YouTube videoId={id} />)},
+        },
+
+    }
 
     return (
         <div>
-            <Navbar isHome={false}  />
+            <Navbar isHome={false} />
             <div className="max-w-5xl mx-auto px-4">
-                        <div style={{backgroundImage: 'url('+urlFor(post.mainImage).url()+')', backgroundSize: 'cover' }} className="h-80"> 
+                <div style={{ backgroundImage: 'url(' + urlFor(post.mainImage).url() + ')', backgroundSize: 'cover' }} className="h-80">
 
-                        </div> 
+                </div>
+
+                <div>
+                    <PortableText value={post.body} components={customComponents} />
+                </div>
             </div>
         </div>
     );
@@ -49,7 +73,7 @@ export async function getStaticProps(context) {
 
 
 export async function getStaticPaths() {
- 
+
 
     const query = '*[_type == "post"]';
     const resp = await client.fetch(query);

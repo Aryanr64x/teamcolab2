@@ -21,7 +21,7 @@ export default function Blog({ posts }) {
                           }
                         </div>
                 </div>
-            </div>
+          </div>
         </div>
     )
 }

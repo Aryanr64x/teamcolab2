@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^1.0.6",
     "@sanity/client": "^3.3.6",
     "@sanity/image-url": "^1.0.1",
     "framer-motion": "^7.3.2",
+    "get-youtube-id": "^1.0.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-youtube": "^9.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
