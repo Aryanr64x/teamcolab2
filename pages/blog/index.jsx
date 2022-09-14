@@ -1,9 +1,13 @@
 import PostCard from "../../components/blog/PostCard"
 import Navbar from "../../components/home/Navbar"
 import client from "../../sanity/client"
+import Head from "next/head"
 export default function Blog({ posts }) {
     return (
         <div className="">
+            <Head>
+              <title> Blog | TeamColab </title>
+            </Head>
             <Navbar isHome={false} />
             <div className="px-4  max-w-6xl mx-auto">
                 <h1 className="text-5xl mt-12">
